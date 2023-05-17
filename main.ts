@@ -5,6 +5,10 @@ enum RadioMessage {
     turn_left = 34092,
     turn_right = 37526,
     stable = 14175,
+    counter_left_foot = 48127,
+    counter_right_foot = 18792,
+    left_foot = 26870,
+    right_foot = 23015,
     left = 14947,
     right = 32391,
     message1 = 49434,
@@ -34,6 +38,12 @@ radio.onReceivedMessage(RadioMessage.turn_left, function () {
     -255
     )
 })
+radio.onReceivedMessage(RadioMessage.counter_right_foot, function () {
+    SuperBit.MotorRun(SuperBit.enMotors.M1, 255)
+})
+radio.onReceivedMessage(RadioMessage.counter_left_foot, function () {
+    SuperBit.MotorRun(SuperBit.enMotors.M3, 255)
+})
 radio.onReceivedMessage(RadioMessage.stop_right, function () {
     SuperBit.MotorRun(SuperBit.enMotors.M2, 0)
 })
@@ -44,6 +54,12 @@ radio.onReceivedMessage(RadioMessage.turn_right, function () {
     SuperBit.enMotors.M3,
     255
     )
+})
+radio.onReceivedMessage(RadioMessage.left_foot, function () {
+    SuperBit.MotorRun(SuperBit.enMotors.M3, -255)
+})
+radio.onReceivedMessage(RadioMessage.right_foot, function () {
+    SuperBit.MotorRun(SuperBit.enMotors.M1, -255)
 })
 radio.onReceivedMessage(RadioMessage.left, function () {
     SuperBit.MotorRun(SuperBit.enMotors.M4, 255)
